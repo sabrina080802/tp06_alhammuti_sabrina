@@ -10,7 +10,7 @@ exec("cd angular-client-form && ng serve");
 const app = express();
 
 const corsOptions = {
-  origin: "http://localhost:4200",
+  origin: "*",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   headers: "Content-Type, Authorization",
   exposedHeaders: "Authorization",
