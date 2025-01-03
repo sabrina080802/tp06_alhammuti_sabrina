@@ -1,0 +1,17 @@
+<div class="profil">
+  <h2>Récapitulatif des informations</h2>
+  <p>Nom : {{ user?.firstname }}</p>
+  <p>Prénom : {{ user?.lastname }}</p>
+  <p>Adresse : {{ user?.address }}</p>
+  <p>Code Postal : {{ user?.postal_code }}</p>
+  <p>Pays : {{ user?.country }}</p>
+  <p>Ville : {{ user?.city }}</p>
+  <p>Téléphone : {{ user?.phone }}</p>
+  <p>Email : {{ user?.email }}</p>
+  <p>Civilité : {{ user?.gender }}</p>
+
+  <div class="profil-menu">
+    <a href="/profil">Modifier</a>
+    <button (click)="onHome()">Retour à l'accueil</button>
+  </div>
+</div>

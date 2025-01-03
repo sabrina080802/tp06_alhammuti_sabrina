@@ -1,0 +1,16 @@
+[
+  {
+    "id": "8dcd441f-a259-4c24-aa94-e63231c914cd",
+    "firstname": "Mouloud",
+    "lastname": "AL HAMMUTI",
+    "email": "aria080802@gmail.com",
+    "password": "$2b$10$AtgzxjgS3slZLFom8rVmOOEj963GAQp1OrKMROzq72uDHPS3vsa4e",
+    "gender": "Mme",
+    "postal_code": "67210",
+    "address": "7 allées des futaies",
+    "city": "OBERNAI",
+    "phone": "0651918283",
+    "logoutAt": 1735602310188,
+    "country": "France"
+  }
+]

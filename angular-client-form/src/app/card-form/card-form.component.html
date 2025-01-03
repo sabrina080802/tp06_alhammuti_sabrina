@@ -1,0 +1,131 @@
+<form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="cardName">Nom de la carte</label>
+    <input
+      id="cardName"
+      formControlName="cardName"
+      type="text"
+      class="form-control"
+      placeholder="Nom de la carte"
+    />
+    <div
+      *ngIf="
+        cardForm.controls['cardName'].invalid &&
+        cardForm.controls['cardName'].touched
+      "
+      class="error-message"
+    >
+      <small *ngIf="cardForm.controls['cardName'].hasError('required')">
+        Le nom est requis.
+      </small>
+      <small *ngIf="cardForm.controls['cardName'].hasError('maxlength')">
+        Le nom est trop long.
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="cardNumber">Numéro de carte</label>
+    <input
+      id="cardNumber"
+      formControlName="cardNumber"
+      type="text"
+      class="form-control"
+      placeholder="Numéro de carte"
+    />
+    <div
+      *ngIf="
+        cardForm.controls['cardNumber'].invalid &&
+        cardForm.controls['cardNumber'].touched
+      "
+      class="error-message"
+    >
+      <small *ngIf="cardForm.controls['cardNumber'].hasError('required')">
+        Le numéro est requis.
+      </small>
+      <small *ngIf="cardForm.controls['cardNumber'].hasError('pattern')">
+        Numéro de carte invalide.
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="ccv">CCV</label>
+    <input
+      id="ccv"
+      formControlName="ccv"
+      type="text"
+      class="form-control"
+      placeholder="CCV"
+    />
+    <div
+      *ngIf="
+        cardForm.controls['ccv'].invalid && cardForm.controls['ccv'].touched
+      "
+      class="error-message"
+    >
+      <small *ngIf="cardForm.controls['ccv'].hasError('required')">
+        Le CCV est requis.
+      </small>
+      <small *ngIf="cardForm.controls['ccv'].hasError('pattern')">
+        CCV invalide.
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="expiryMonth">Mois</label>
+    <input
+      id="expiryMonth"
+      formControlName="expiryMonth"
+      type="text"
+      class="form-control"
+      placeholder="Mois (MM)"
+    />
+    <div
+      *ngIf="
+        cardForm.controls['expiryMonth'].invalid &&
+        cardForm.controls['expiryMonth'].touched
+      "
+      class="error-message"
+    >
+      <small *ngIf="cardForm.controls['expiryMonth'].hasError('required')">
+        Le mois est requis.
+      </small>
+      <small *ngIf="cardForm.controls['expiryMonth'].hasError('pattern')">
+        Mois invalide.
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="expiryYear">Année</label>
+    <input
+      id="expiryYear"
+      formControlName="expiryYear"
+      type="text"
+      class="form-control"
+      placeholder="Année (YYYY)"
+    />
+    <div
+      *ngIf="
+        cardForm.controls['expiryYear'].invalid &&
+        cardForm.controls['expiryYear'].touched
+      "
+      class="error-message"
+    >
+      <small *ngIf="cardForm.controls['expiryYear'].hasError('required')">
+        L'année est requise.
+      </small>
+      <small *ngIf="cardForm.controls['expiryYear'].hasError('pattern')">
+        Année invalide.
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary" [disabled]="cardForm.invalid">
+      Soumettre
+    </button>
+  </div>
+</form>

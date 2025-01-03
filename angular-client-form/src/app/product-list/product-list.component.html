@@ -1,0 +1,33 @@
+<div class="product-page">
+  <div class="filtre-coquet">
+    <input type="search" placeholder="Rechercher..." [(ngModel)]="searchName" />
+    <button (click)="onSearchByName()">Go</button>
+
+    <p>Prix :</p>
+    <input type="number" placeholder="Min." [(ngModel)]="minPrice" />
+    <p>à</p>
+    <input type="number" placeholder="Max." [(ngModel)]="maxPrice" />
+    <button (click)="onApplyPriceFilter()">O_O</button>
+
+    <p>Catégorie :</p>
+    <select (change)="onCategoryChange($event)" [(ngModel)]="category">
+      <option *ngFor="let category of categories" class="category">
+        {{ category }}
+      </option>
+    </select>
+  </div>
+
+  <div class="product-list">
+    <div *ngFor="let product of products" class="product">
+      <img [src]="product.imageUrl" alt="{{ product.name }}" />
+      <h2>{{ product.name }}</h2>
+      <p class="description">{{ product.description }}</p>
+      <button (click)="addProductToCart(product)" class="btn-add-cart">
+        <img src="/photo/panier.png" alt="" />
+      </button>
+      <p class="price">
+        Price: {{ product.price | currency : "EUR" : "symbol" : "1.2-2" }}
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div *ngIf="editingCard" class="form-container">
+  <h2>Modifier la carte</h2>
+
+  <form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+    <label for="cardName">Nom de la carte</label>
+    <input type="text" id="cardName" formControlName="cardName" />
+
+    <label for="cardNumber">Numéro de la carte</label>
+    <input type="text" id="cardNumber" formControlName="cardNumber" />
+
+    <label for="ccv">CCV</label>
+    <input type="text" id="ccv" formControlName="ccv" />
+
+    <label for="expiryMonth">Mois d'expiration</label>
+    <input type="number" id="expiryMonth" formControlName="expiryMonth" />
+
+    <label for="expiryYear">Année d'expiration</label>
+    <input type="number" id="expiryYear" formControlName="expiryYear" />
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="!cardForm.valid">Mettre à jour</button>
+      <button type="button" (click)="onCancel()">Annuler</button>
+    </div>
+  </form>
+</div>
+
+<table *ngIf="!editingCard">
+  <thead>
+    <tr>
+      <th>Nom de la carte</th>
+      <th>Numéro de la carte</th>
+      <th>CCV</th>
+      <th>Mois</th>
+      <th>Année</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let card of cards">
+      <td>{{ card.name }}</td>
+      <td>{{ card.cardNumber }}</td>
+      <td>{{ card.ccv }}</td>
+      <td>{{ card.expiryMonth }}</td>
+      <td>{{ card.expiryYear }}</td>
+      <td>
+        <button class="btn-edit" (click)="onEdit(card)">Modifier</button>
+        <button class="btn-delete" (click)="onDelete(card)">Supprimer</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="cards.length === 0" class="no-cards">Aucune carte disponible.</div>

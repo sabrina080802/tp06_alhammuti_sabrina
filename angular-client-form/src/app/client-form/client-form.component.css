@@ -1,0 +1,59 @@
+form div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+  width: 100%;
+}
+form div label {
+  flex: 1;
+  color: black;
+  transition: color 0.25s ease-out;
+}
+form > * {
+  margin-bottom: 0.5em;
+}
+
+form div input,
+form div select {
+  flex: 1.75;
+  margin-left: 1em;
+  font-size: 1em;
+  background-color: white;
+  border: 1px solid rgb(183, 110, 121);
+  border-radius: 0.25em;
+  font-size: 1em;
+  padding: 0.5em;
+  color: black;
+  outline: none;
+  transition: border-color 0.75s ease-out, transform 0.15s ease-out;
+}
+form div input:focus {
+  border-color: var(--secondary);
+  transform: scale(1.025);
+  transition: border-color 0.25s ease-out, transform 0.15s ease-out;
+}
+form div input:not(:placeholder-shown):invalid {
+  border-color: rgb(255, 0, 64);
+}
+form div input:focus ~ label {
+  color: white;
+}
+form button {
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: var(--secondary);
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 0.25em;
+  font-size: 1em;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}

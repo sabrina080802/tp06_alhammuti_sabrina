@@ -1,0 +1,31 @@
+<div class="cart-container">
+  <h1>Mon Panier</h1>
+  <p class="elements-count">{{ count | async }} éléments</p>
+
+  <div class="cart-items">
+    <ng-container *ngIf="items | async as items; else emptyCart">
+      <div *ngFor="let item of items" class="cart-item">
+        <div class="item-details">
+          <h2>{{ item.product.name }}</h2>
+          <p>Prix: {{ item.product.price.toFixed(2) }}</p>
+          <p>Quantité: {{ item.count }}</p>
+        </div>
+        <button class="remove-btn" (click)="removeFromCart(item.product)">
+          Supprimer
+        </button>
+      </div>
+    </ng-container>
+
+    <ng-template #emptyCart>
+      <p class="empty-message">Votre panier est vide.</p>
+    </ng-template>
+  </div>
+
+  <div class="cart-summary">
+    <p>
+      Total:
+      <strong style="color: black">{{ total | async | currency }}</strong>
+    </p>
+    <button class="clear-btn" (click)="clearCart()">Vider le panier</button>
+  </div>
+</div>

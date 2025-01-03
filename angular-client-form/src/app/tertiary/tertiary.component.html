@@ -1,0 +1,21 @@
+<header>
+  <img class="logo" src="/photo/logo.png" alt="" />
+  <nav class="menu-coquet">
+    <ul>
+      <li routerLinkActive="active"><a routerLink="/home">Accueil</a></li>
+      <li routerLinkActive="active"><a routerLink="/products">Produits</a></li>
+      <li routerLinkActive="active" *ngIf="!isConnected">
+        <a routerLink="/connexion"> Connexion </a>
+      </li>
+      <li routerLinkActive="active" *ngIf="isConnected">
+        <a routerLink="/panier">Mon panier ({{ count | async }})</a>
+      </li>
+      <li routerLinkActive="active" *ngIf="isConnected">
+        <a routerLink="/recap"> Mon profil </a>
+      </li>
+      <li routerLinkActive="active" *ngIf="isConnected">
+        <a href="javascript:void(0)" (click)="disconnect()"> Déconnexion </a>
+      </li>
+    </ul>
+  </nav>
+</header>

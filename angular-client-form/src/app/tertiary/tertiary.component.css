@@ -1,0 +1,31 @@
+.logo {
+  display: block;
+  max-height: 25vh;
+  margin: 0 auto;
+  z-index: 20;
+  position: relative;
+  border-bottom: none;
+}
+.menu-coquet ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+.menu-coquet ul li {
+  list-style: none;
+  margin: 0 0.5em;
+  padding: 0.5em 2em;
+  text-align: center;
+  font-size: 1.1em;
+  border-bottom: 2px solid transparent;
+}
+.menu-coquet ul .active {
+  border-bottom: 2px solid var(--secondary);
+}
+.menu-coquet ul li a {
+  margin: 0;
+  color: var(--secondary);
+  text-decoration: none;
+}

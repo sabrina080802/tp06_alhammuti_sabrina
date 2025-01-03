@@ -1,0 +1,43 @@
+.profil {
+  flex: 1;
+}
+.profil p {
+  margin: 0;
+  margin-bottom: 0.5em;
+}
+.profil a {
+  background-color: var(--secondary);
+  padding: 0.5em 1em;
+  text-decoration: none;
+  text-align: center;
+
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.25em;
+  font-size: 1em;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.profil button {
+  background-color: var(--secondary);
+  padding: 0.5em 1em;
+  text-decoration: none;
+  text-align: center;
+
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.25em;
+  font-size: 1em;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.profil-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
