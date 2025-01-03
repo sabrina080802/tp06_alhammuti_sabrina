@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { SEPHORA_PRODUCTS_MOCK } from './sephora-products.mock';
+import { map, Observable, of } from 'rxjs';
 import { Product } from './product';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environment/environment';
@@ -22,10 +21,8 @@ export class SephoraProductService {
     if (category == 'toutes les catégories' || category == '')
       return this.getProducts();
 
-    return of(
-      SEPHORA_PRODUCTS_MOCK.filter(
-        (x) => x.category.toLowerCase().trim() == category
-      )
+    return this.getProducts().pipe(
+      map((p) => p.filter((x) => x.category.toLowerCase().trim() == category))
     );
   }
 
@@ -35,10 +32,8 @@ export class SephoraProductService {
   ): Observable<Product[]> {
     if (minPrice == 0 || maxPrice == 0) return this.getProducts();
 
-    return of(
-      SEPHORA_PRODUCTS_MOCK.filter(
-        (x) => x.price < maxPrice && x.price > minPrice
-      )
+    return this.getProducts().pipe(
+      map((p) => p.filter((x) => x.price < maxPrice && x.price > minPrice))
     );
   }
 
@@ -46,8 +41,8 @@ export class SephoraProductService {
     name = name.toLowerCase().trim();
     if (name == null || name == '') return this.getProducts();
 
-    return of(
-      SEPHORA_PRODUCTS_MOCK.filter((x) => x.name.toLowerCase().includes(name))
+    return this.getProducts().pipe(
+      map((p) => p.filter((x) => x.name.toLowerCase().includes(name)))
     );
   }
 }
