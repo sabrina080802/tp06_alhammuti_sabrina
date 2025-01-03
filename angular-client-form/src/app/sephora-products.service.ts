@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { SEPHORA_PRODUCTS_MOCK } from './sephora-products.mock';
 import { Product } from './product';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../environment/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,9 @@ export class SephoraProductService {
   constructor(private readonly httpClient: HttpClient) {}
 
   getProducts(): Observable<Product[]> {
-    return this.httpClient.get<Product[]>('/api/catalogue');
+    return this.httpClient.get<Product[]>(
+      `${environment.apiUrl}/api/catalogue`
+    );
   }
 
   getProductsByCategory(category: string): Observable<Product[]> {
