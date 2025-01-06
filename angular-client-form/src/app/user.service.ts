@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, firstValueFrom, BehaviorSubject } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
 import { Inject, PLATFORM_ID } from '@angular/core';
+import { environment } from '../environment/environment';
 
 export interface ApiResponse {
   success: boolean;
@@ -73,11 +74,15 @@ export class UserService {
 
   async updateProfil(newUserData: User) {
     const result = await firstValueFrom(
-      this.http.post<ApiResponse>('/api/updateProfil', newUserData, {
-        headers: new HttpHeaders({
-          Authorization: `Bearer ${this.#token.getValue()}`,
-        }),
-      })
+      this.http.post<ApiResponse>(
+        `${environment.apiUrl}/api/updateProfil`,
+        newUserData,
+        {
+          headers: new HttpHeaders({
+            Authorization: `Bearer ${this.#token.getValue()}`,
+          }),
+        }
+      )
     );
     if (result?.success) {
       this.#user = newUserData;
@@ -88,7 +93,10 @@ export class UserService {
   async login(email: string, password: string): Promise<LoginResponse> {
     const loginData = { email, password };
     const result = await firstValueFrom(
-      this.http.post<LoginResponse>('/api/login', loginData)
+      this.http.post<LoginResponse>(
+        `${environment.apiUrl}/api/login `,
+        loginData
+      )
     );
 
     if (result?.success) {
