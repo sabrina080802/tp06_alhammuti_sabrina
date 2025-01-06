@@ -116,16 +116,20 @@ export class UserService {
     this.#user = defaultUser;
 
     return await firstValueFrom(
-      this.http.post<ApiResponse>('/api/disconnect', null, {
-        headers: new HttpHeaders({
-          Authorization: `Bearer ${token}`,
-        }),
-      })
+      this.http.post<ApiResponse>(
+        `${environment.apiUrl}/api/disconnect `,
+        null,
+        {
+          headers: new HttpHeaders({
+            Authorization: `Bearer ${token}`,
+          }),
+        }
+      )
     );
   }
   async register(user: User): Promise<ApiResponse> {
     return await firstValueFrom(
-      this.http.post<ApiResponse>('/api/register', user)
+      this.http.post<ApiResponse>(`${environment.apiUrl}/api/register`, user)
     );
   }
 }
